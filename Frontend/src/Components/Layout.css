@@ -1,0 +1,13 @@
+body{
+  background: white;
+}
+
+.cnavbar{
+  background: linear-gradient(to right, #6600cc 0%, #ff0066 100%);
+}
+
+.container{
+  color:white;
+  font-family: monospace;
+  font-weight: 100;
+}
