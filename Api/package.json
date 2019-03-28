@@ -2,8 +2,14 @@
   "name": "Urban-Secuirity-api",
   "version": "1.0.0",
   "description": "",
+  "engines": {
+    "node": "10.15.3"
+  },
+
   "main": "start.js",
-  "scripts": {},
+  "scripts": {
+    "start": "node start"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
