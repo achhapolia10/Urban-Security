@@ -3,7 +3,7 @@ const request = require("request");
 const web3 = require('../web3');
 const expressFileUpload = require('express-fileupload')();
 const router = express.Router();
-
+const filetype =require('file-type')
 const {SwarmClient} = require('@erebos/swarm-node');
 const vendor = require('../vendor');
 
@@ -164,19 +164,22 @@ router.post('/uploadFile', expressFileUpload ,async (req,res) =>{
                     res.status(500).send({result: 'INTERNAL SERVER ERROR'})
                 });
         }
-    } catch (e) {setDeviceData
+    } catch (e) {
         res.status(500).send({result: 'INTERNAL SERVER ERROR'});
     }
 });
 router.get('/getSavedFile', (req, res) => {
     const accessHash = req.query.accessHash;
     //const mimeType = req.query.fileType;
-    client.bzz.download(accessHash)
+    client.bzz.download(accessHash )
         .then((promise) => {
             console.log(promise.url);
+
             request({url: promise.url, json: true}, (err, response, body) => {
                 body.result = 'OK';
-                res.status(200).send(body);
+                const mimetype = filetype(Buffer.from(body,'utf-8'));
+                console.log(mimetype)
+                    res.status(200).send({data:body,result : 'OK',mimetype:mimetype.mime});
             });
 
         })
