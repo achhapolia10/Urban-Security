@@ -1,4 +1,4 @@
-pragma solidity ^0.4.6;
+pragma solidity  >=0.4.22 <0.6.0;
 
 contract EventData {
     // contract owner

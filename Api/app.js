@@ -2,7 +2,7 @@ const Express = require('express');
 const path = require('path');
 const routes = require('./routes/index');
 const bodyParser = require('body-parser');
-
+const expressFileUpload = require('express-fileupload');
 const app = Express();
 
 app.set('views', path.join(__dirname, 'views'));
@@ -12,5 +12,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use('/', routes);
 app.use(Express.static('public'));
+
 
 module.exports = app;
